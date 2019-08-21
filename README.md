@@ -6,7 +6,15 @@ There exist furthermore a tools which can create resource files in C# projects f
 
 ## Installation
 
-TBD
+Install [DCCS.LocalizedString.NetStandard](https://www.nuget.org/packages/DCCS.LocalizedString.NetStandard/) with NuGet:
+
+    Install-Package DCCS.LocalizedString.NetStandard
+
+Or via the .NET Core command line interface:
+
+    dotnet add package DCCS.LocalizedString.NetStandard
+
+Either commands, from Package Manager Console or .NET Core CLI, will download and install DCCS.LocalizedString.NetStandard and all required dependencies.
 
 ## Examples
 
