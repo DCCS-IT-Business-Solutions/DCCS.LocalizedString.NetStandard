@@ -1,0 +1,42 @@
+﻿@startuml
+
+interface ILocalizedString {
+	string GetText(CultureInfo language)
+}
+note top: Encasulate a multilanguage string
+
+interface ITranslationService {
+	ILocalizedString Create(ILocalizerKey key)
+	ILocalizedString Create(ILocalizerFormatKey key, string[] parameters)
+}
+note top: Factory to create multilanguage strings
+ITranslationService ..> ILocalizedString : use
+ITranslationService ..> ILocalizerKey : use
+ITranslationService ..> ILocalizerFormatKey : use
+
+interface ILocalizerKey{
+	String Key
+}
+
+interface ILocalizerFormatKey {
+	String[] ParameterNames
+}
+ILocalizerFormatKey ..|> ILocalizerKey
+
+class LocalizedStringKey
+note top of LocalizedStringKey
+Must be created as static readonly field.
+Namespace and class name will be used as key.
+end note
+LocalizedStringKey ..|> ILocalizerKey
+
+class LocalizedFormatKey
+note top of LocalizedFormatKey
+Must be created as static readonly field.
+Namespace and class name will be used as key.
+end note
+
+LocalizedFormatKey ..|> LocalizedStringKey
+LocalizedFormatKey ..|> ILocalizerFormatKey
+
+@enduml

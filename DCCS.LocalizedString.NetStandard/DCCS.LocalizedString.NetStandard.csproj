@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <Copyright>© DCCS GmbH. All rights reserved.</Copyright>
+    <RepositoryUrl>https://github.com/DCCS-IT-Business-Solutions/DCCS.LocalizedString.NetStandard.git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/DCCS-IT-Business-Solutions/DCCS.LocalizedString.NetStandard</PackageProjectUrl>
+    <Version>1.1.1</Version>
+    <Company>DCCS GmbH</Company>
+    <Authors>DCCS GmbH</Authors>    
+  </PropertyGroup>
+
+</Project>
