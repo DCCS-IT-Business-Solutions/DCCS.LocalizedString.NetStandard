@@ -7,8 +7,9 @@
     <Configurations>Debug;Release;Local.Int</Configurations>
     <LangVersion>7.1</LangVersion>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageType>DotnetCliTool</PackageType>
     <PackageId>DCCS.LocalizedString.ProjectResourceCreator</PackageId>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>createprojectresource</ToolCommandName>
     <Version>1.1.1</Version>
     <Authors>DCCS GmbH</Authors>
     <Product>DCCS.LocalizedString.ProjectResourceCreator</Product>
