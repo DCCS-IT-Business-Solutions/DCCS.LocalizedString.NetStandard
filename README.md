@@ -34,7 +34,6 @@ using DCCS.LocalizedString.NetStandard;
 class MyClass
 {
     // Declaration of the key - Must be static in none generic classes
-
     static readonly LocalizedStringKey ThisIsASample = new LocalizedStringKey("This is a sample application");
 
     // If you want use runtime parameters, use the LocalizedFormatKey and specifiy the name of the provided parameters
@@ -87,8 +86,6 @@ class MyClass
         [Translated("Dark Green")] // Provide default text, if the text of the enum value is not suitable
         GreenDark,
     }
-
-
 }
 ```
 
