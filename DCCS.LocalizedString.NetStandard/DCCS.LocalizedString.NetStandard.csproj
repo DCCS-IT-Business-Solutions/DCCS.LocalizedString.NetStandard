@@ -9,7 +9,12 @@
     <PackageProjectUrl>https://github.com/DCCS-IT-Business-Solutions/DCCS.LocalizedString.NetStandard</PackageProjectUrl>
     <Version>1.1.1</Version>
     <Company>DCCS GmbH</Company>
-    <Authors>DCCS GmbH</Authors>    
+    <Authors>DCCS GmbH</Authors>
+    <PackageTags>LocalizedException LocalizedWarningException LocalizedString Multilangue</PackageTags>    
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DCCS.ExceptionHelpers.NetStandard" Version="1.0.3" />
+  </ItemGroup>
 
 </Project>

@@ -1,8 +1,8 @@
 # DCCS.LocalizedString.NetStandard [![Build status](https://ci.appveyor.com/api/projects/status/nbenos1nau71747v?svg=true)](https://ci.appveyor.com/project/mgeramb/dccs-localizedstring-netstandard) [![NuGet Badge](https://buildstats.info/nuget/DCCS.LocalizedString.NetStandard)](https://www.nuget.org/packages/DCCS.LocalizedString.NetStandard/)
-DCCS.LocalizedString.NetStandard provide a multilanguage string implementation. 
+DCCS.LocalizedString.NetStandard provide a multilanguage string implementation and multilangue exceptions.
+
 The accessor keys for the strings have to be defined as static objects which can be found by reflection. 
 There exist furthermore a tools which can create resource files in C# projects for the required keys.
-
 
 ## Installation
 
