@@ -13,7 +13,7 @@ namespace DCCS.LocalizedString.ProjectResourceCreator
 
         static int Main(string[] args)
         {
-
+            Console.WriteLine($"Started in '{ Directory.GetCurrentDirectory() }'");
             int errorCode = 0;
             InitConfiguration();
 
