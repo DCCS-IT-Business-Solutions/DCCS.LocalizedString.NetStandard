@@ -10,15 +10,18 @@ namespace DCCS.LocalizedString.NetStandard
     [DataContract]
     [Serializable]
     public class LocalizedExceptionContract : LocalizedStringContract
-    {
-        [DataMember]
-        public bool IsError { get; set; }
+    {        
         public LocalizedExceptionContract(LocalizedException localizedException, CultureInfo cultureInfo = null, bool singleMessage = false) : base(singleMessage ? (ILocalizedString) localizedException : new LocalizedArray(LocalizedException.SearchLocalizedExceptions(localizedException)), cultureInfo)
         {
+            bool isError;
             if (singleMessage)
-                IsError = !(localizedException is LocalizedWarningException);
+                isError = !(localizedException is LocalizedWarningException);
             else
-                IsError = LocalizedException.SearchLocalizedExceptions(localizedException).All(e => e is LocalizedWarningException);
+                isError = LocalizedException.SearchLocalizedExceptions(localizedException).All(e => e is LocalizedWarningException);
+            if (isError)
+                Type = LocalizedStringType.Error.ToString();
+            else
+                Type = LocalizedStringType.Warning.ToString();
         }
 
         public static LocalizedExceptionContract[] CreateArray(IEnumerable<LocalizedException> exceptions, CultureInfo cultureInfo = null)

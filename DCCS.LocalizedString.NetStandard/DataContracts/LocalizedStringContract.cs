@@ -14,6 +14,11 @@ namespace DCCS.LocalizedString.NetStandard
     public class LocalizedStringContract : ILocalizedString
     {
         /// <summary>
+        /// The type of the text
+        /// </summary>
+        [DataMember(Name = "text")]
+        public string Type { get; set; } = LocalizedStringType.Information.ToString();
+        /// <summary>
         /// Text in the language specified in <see cref="Language"/> 
         /// </summary>
         [DataMember(Name = "text")]
@@ -72,5 +77,12 @@ namespace DCCS.LocalizedString.NetStandard
             }
             return Invariant;
         }
+    }
+
+    public enum LocalizedStringType
+    {
+        Information,
+        Warning,
+        Error
     }
 }
