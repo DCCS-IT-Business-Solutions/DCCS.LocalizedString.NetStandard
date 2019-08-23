@@ -33,6 +33,15 @@ after_build:
 
 test_script:
 
+test:
+  # only assemblies to test
+  assemblies:
+    only:
+      - '**\*.Tests.dll'
+
+artifacts:
+- path: output/**/*.*
+
 artifacts:
 - path: output/**/*.*
 
