@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 
@@ -12,9 +13,22 @@ namespace DCCS.LocalizedString.NetStandard
     {
         [DataMember]
         public bool IsError { get; set; }
-        public LocalizedExceptionContract(ITranslationService translationService, LocalizedException userException, CultureInfo cultureInfo = null) : base(LocalizedException.CreateLocalizedMessage(translationService, userException), cultureInfo)
+        public LocalizedExceptionContract(LocalizedException localizedException, CultureInfo cultureInfo = null, bool singleMessage = false) : base(singleMessage ? (ILocalizedString) localizedException : new LocalizedArray(LocalizedException.SearchLocalizedExceptions(localizedException)), cultureInfo)
         {
-            IsError = !(userException is LocalizedWarningException);
+            if (singleMessage)
+                IsError = !(localizedException is LocalizedWarningException);
+            else
+                IsError = LocalizedException.SearchLocalizedExceptions(localizedException).All(e => e is LocalizedWarningException);
+        }
+
+        public static LocalizedExceptionContract[] CreateArray(IEnumerable<LocalizedException> exceptions, CultureInfo cultureInfo = null)
+        {
+            var contracts = new List<LocalizedExceptionContract>();
+            foreach (var exception in exceptions)
+            {
+                contracts.Add(new LocalizedExceptionContract(exception, cultureInfo, true));
+            }
+            return contracts.ToArray();
         }
     }
 }

@@ -20,7 +20,13 @@ Either commands, from Package Manager Console or .NET Core CLI, will download an
 
 This tools create resource file by using reflection out of your compiled .NET assembly
 
-TBD
+Install the tool in the package managment console, command prompt or powershell
+
+    dotnet tool install --global DCCS.LocalizedString.ProjectResourceCreator
+
+To run the tool 
+
+    dotnet tool install --global DCCS.LocalizedString.ProjectResourceCreator
 
 ## Examples
 
