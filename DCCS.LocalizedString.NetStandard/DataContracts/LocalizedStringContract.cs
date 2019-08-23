@@ -16,7 +16,7 @@ namespace DCCS.LocalizedString.NetStandard
         /// <summary>
         /// The type of the text
         /// </summary>
-        [DataMember(Name = "text")]
+        [DataMember(Name = "type")]
         public string Type { get; set; } = LocalizedStringType.Information.ToString();
         /// <summary>
         /// Text in the language specified in <see cref="Language"/> 
