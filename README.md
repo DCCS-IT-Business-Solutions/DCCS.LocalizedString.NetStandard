@@ -26,7 +26,7 @@ Install the tool in the package managment console, command prompt or powershell
 
 To run the tool 
 
-    dotnet tool install --global DCCS.LocalizedString.ProjectResourceCreator
+    <To Do: Description how to run the tool>
 
 ## Examples
 
