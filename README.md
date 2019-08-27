@@ -4,7 +4,7 @@ DCCS.LocalizedString.NetStandard provide a multilanguage string implementation a
 The accessor keys for the strings have to be defined as static objects which can be found by reflection. 
 There exist furthermore a tools which can create resource files in C# projects for the required keys.
 
-**Note: Take a look at [DCCS.AspNetCore.LocalizedString](https://github.com/DCCS-IT-Business-Solutions/DCCS.AspNetCore.LocalizedString) for usage of this library in an ASP.NET Core project***
+**Note: Take a look at [DCCS.AspNetCore.LocalizedString](https://github.com/DCCS-IT-Business-Solutions/DCCS.AspNetCore.LocalizedString) for usage of this library in an ASP.NET Core project**
 
 ## Installation
 
