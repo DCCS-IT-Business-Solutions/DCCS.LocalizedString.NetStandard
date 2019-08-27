@@ -2,6 +2,7 @@
 using DCCS.LocalizedString.NetStandard.Helpers;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -21,19 +22,37 @@ namespace DCCS.LocalizedString.ProjectResourceCreator
         private readonly string _configurationAndPlatform;
         private readonly string _configurationAndPlatformString;
         private readonly string _configuration;
+        private readonly string _culturesNames;
 
-        public CSharpProjectTranslator(string projectFile, string configurationAndPlatform)
+        public CSharpProjectTranslator(string projectFile, string configurationAndPlatform, string cultureNames)
         {            
             _projectFile = Path.GetFullPath(projectFile);
             _configurationAndPlatform = configurationAndPlatform;
             _configurationAndPlatformString = "'" + _configurationAndPlatform + "'";
             _configuration = configurationAndPlatform.Split('|')[0];
+            _culturesNames = cultureNames;
         }
 
         public void Translate()
         {
             ReadProjectFile(out var projectXmlDocument, out var extension, out var assemblyName, out var outputDirectory, out var namespaceManager, out var projectType);
-
+            if (projectType == ProjectType.NetCore)
+            {
+                string directory = Path.GetDirectoryName(_projectFile);
+                string projectFile = Path.GetFileName(_projectFile);
+                Console.WriteLine($"Run build for {Path.GetFileName(_projectFile)}");
+                var processStart = new ProcessStartInfo("dotnet", $"build -c {_configuration} {projectFile}");
+                processStart.WorkingDirectory = directory;
+                processStart.UseShellExecute = false;
+                using (Process process = Process.Start(processStart))
+                {
+                    process.WaitForExit();
+                    if (process.ExitCode != 0)
+                    {
+                        throw new Exception($"Build for {_projectFile} failed");
+                    }
+                }
+            }
             // setup
             string projectDir = Path.GetDirectoryName(_projectFile);
 
@@ -51,7 +70,21 @@ namespace DCCS.LocalizedString.ProjectResourceCreator
             Assembly assembly = Assembly.LoadFrom(dllPath);
             var requiredEntries = LocalizerUsageSearcher.GetLocalizerEntries(assembly).ToList();
 
-            foreach (CultureInfo culture in new[] { CultureInfo.InvariantCulture, CultureInfo.GetCultureInfo("de") })
+            List<CultureInfo> cultures = new List<CultureInfo>();
+            cultures.Add(CultureInfo.InvariantCulture);
+            if (string.IsNullOrEmpty(_culturesNames))
+            {
+                cultures.Add(CultureInfo.CurrentUICulture.Parent != null && CultureInfo.CurrentUICulture.Parent != CultureInfo.InvariantCulture ? CultureInfo.CurrentUICulture.Parent : CultureInfo.CurrentUICulture);
+            }
+            else
+            {
+                foreach (var cultureName in _culturesNames.Split(',', ';'))
+                {
+                    cultures.Add(CultureInfo.GetCultureInfo(cultureName));
+                }
+            }
+
+            foreach (CultureInfo culture in cultures)
             {
                 // setup
                 string languageFileNamePart = "";

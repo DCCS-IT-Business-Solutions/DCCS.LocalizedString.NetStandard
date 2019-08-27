@@ -24,9 +24,26 @@ Install the tool in the package managment console, command prompt or powershell
 
     dotnet tool install --global DCCS.LocalizedString.ProjectResourceCreator
 
-To run the tool 
+To run the tool go to your project or solution folder and start
 
-    <To Do: Description how to run the tool>
+    createprojectresource
+
+This will create resource files for invariant and current user interface culture. If you want other resources run the tool with the cultures option (e.g. for es and fr):
+
+    createprojectresource --cultures es,fr
+
+**Important: For classic .net framework project ensure that you have build your projects first!**
+
+**Note: Resource entries which values starts with '!' are ignored**
+
+Uninstall the tool in the package managment console, command prompt or powershell
+
+    dotnet tool uninstall --global DCCS.LocalizedString.ProjectResourceCreator
+
+Do upgrade the tool to the lasted version, deinstall the previous and install the new
+
+    dotnet tool uninstall --global DCCS.LocalizedString.ProjectResourceCreator
+    dotnet tool install --global DCCS.LocalizedString.ProjectResourceCreator
 
 ## Examples
 
