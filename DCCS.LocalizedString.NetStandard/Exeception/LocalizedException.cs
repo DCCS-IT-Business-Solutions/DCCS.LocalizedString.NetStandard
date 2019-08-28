@@ -39,7 +39,7 @@ namespace DCCS.LocalizedString.NetStandard
 
         public static IEnumerable<LocalizedException> SearchLocalizedExceptions(Exception exception)
         {
-            return exception.GetAllExceptionsInHirachy().OfType<LocalizedException>();
+            return exception.GetAllExceptionsInHierarchy().OfType<LocalizedException>();
         }
 
 

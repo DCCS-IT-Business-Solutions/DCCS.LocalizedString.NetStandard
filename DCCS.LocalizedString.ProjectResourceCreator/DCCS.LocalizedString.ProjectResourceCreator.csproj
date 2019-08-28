@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
     <AssemblyName>dotnet-createprojectresource</AssemblyName>
     <Configurations>Debug;Release;Local.Int</Configurations>
     <LangVersion>7.1</LangVersion>
@@ -32,8 +32,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.0" AllowExplicitVersion="true" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.0" AllowExplicitVersion="true" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.1.0" />
     <PackageReference Include="Microsoft.Build" Version="15.8.166" />
     <PackageReference Include="Microsoft.Build.Framework" Version="15.8.166" />
     <PackageReference Include="NETStandard.Library" Version="2.0.3" />

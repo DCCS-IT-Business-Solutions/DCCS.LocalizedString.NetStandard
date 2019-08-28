@@ -14,7 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DCCS.ExceptionHelpers.NetStandard" Version="1.0.3" />
+    <PackageReference Include="DCCS.ExceptionHelpers.NetStandard" Version="1.0.4" />
   </ItemGroup>
 
 </Project>
