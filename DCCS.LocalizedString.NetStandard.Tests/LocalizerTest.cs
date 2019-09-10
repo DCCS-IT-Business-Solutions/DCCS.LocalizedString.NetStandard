@@ -1,3 +1,4 @@
+using DCCS.LocalizedString.NetStandard.Tests.Properties;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using SimpleInjector;
@@ -105,6 +106,15 @@ namespace DCCS.LocalizedString.NetStandard.Tests
             Assert.AreEqual("First: Test 1 Second: english", result);
 
             mock.VerifyAll();
+        }
+
+        [TestMethod]
+        public void TestResourceLocalizeString()
+        {
+            // Please note, this is not a typical usage of this framework, this is only helpfull if you want use the Generated Resource Classes without the Key framework
+            var localizedString = new ResourceLocalizedString((c) => Resources.DCCS_LocalizedString_NetStandard_Tests_LocalizerTest_TestString);
+            Assert.AreEqual("Deutsch", localizedString.GetText(CultureInfo.GetCultureInfo("de")));
+            Assert.AreEqual("English", localizedString.GetText(CultureInfo.InvariantCulture));
         }
 
         [TestMethod]
