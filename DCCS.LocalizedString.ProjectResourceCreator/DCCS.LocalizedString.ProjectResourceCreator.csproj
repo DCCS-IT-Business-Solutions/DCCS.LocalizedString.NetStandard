@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.0" AllowExplicitVersion="true" />
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.15" AllowExplicitVersion="true" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.1.0" />
     <PackageReference Include="Microsoft.Build" Version="15.8.166" />
     <PackageReference Include="Microsoft.Build.Framework" Version="15.8.166" />
